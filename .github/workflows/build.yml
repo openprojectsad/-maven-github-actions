@@ -3,28 +3,36 @@ name: Python Web Deploy
 on: [push]
 
 jobs:
+  call_workflow:
+    uses: openprojectsad/pipeline-github-actions/.github/workflows/MavenLibPipelineJobs.yml@feature/DTPP-34
+    with: 
+      shouldMaven: yes 
+    
  
-  build:
-    runs-on: ubuntu-latest
-    env:
-      JOBS_ENV: ../../
+  # build:
+  #   runs-on: ubuntu-latest
+  #   steps: 
+  #     - name: Get maven-github-actions repo
+  #       uses: actions/checkout@v2
+  #       with:
+  #         ref: feature/DTPP-34
 
-    steps: 
-      - name: Get maven-github-actions repo
-        uses: actions/checkout@v2
-        with:
-          ref: feature/DTPP-34
+  #     - name: test location where I am maven-github-actions 
+  #       run: ls -l
+             
+      # - name: Get pipeline-github-actions
+      #   uses: actions/checkout@v2
+      #   with:
+      #     repository: openprojectsad/pipeline-github-actions
+      #     ref: feature/DTPP-34
+      #     token: ${{ secrets.PAT_TOKEN }}
+      #     path: .github/workflows/ 
+      
+      # - name: test location where pipeline-github-actions ok
+      #   run: ls -lahtr .github/workflows
 
-      - name: test location where I am maven-github-actions
-        run: ls -l maven/
-              
-      - name: Get pipeline-github-actions
-        uses: actions/checkout@v2
-        with:
-          repository: openprojectsad/pipeline-github-actions
-          ref: feature/DTPP-34
-          token: ${{ secrets.PAT_TOKEN }}
-
-      - name: test location where I am pipeline-github-actions
-        run: ls -l ${JOBS_ENV}
+        
+    
+        
+      
 

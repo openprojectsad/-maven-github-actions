@@ -1,0 +1,23 @@
+name: Python Web Deploy
+
+on: [push]
+
+jobs:
+ 
+  build:
+    runs-on: ubuntu-latest
+
+    steps: 
+      - uses: actions/checkout@v2
+
+      - name: Get devops-pipelines-github-actions
+        uses: actions/checkout@v2
+        with:
+          repository: AppGate-TFP/devops-pipelines-github-actions
+          ref: feature/DTPP-34
+          token: ${{ secrets.PAT_TOKEN }}
+
+      - name: test location where I am 
+        run: ls -l
+
+

@@ -6,7 +6,7 @@ jobs:
   call_workflow:
     uses: openprojectsad/pipeline-github-actions/.github/workflows/MavenLibPipelineJobs.yml@feature/DTPP-34
     with: 
-      shouldMaven: yes 
+      javaVersion: '17' 
     
  
   # build:
